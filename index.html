@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Tables</title>
+    <!-- CSS files -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+
+    <div class="container mb-5 mt-3">
+        <table class="table table-striped table-bordered mydatatable" style="width: 100%;" >
+            <thead>
+                <tr>
+                    <th colspan="1" rowspan="2">Name</th>
+                    <th colspan="2">HR Information</th>
+                    <th colspan="3">Contact</th>
+                </tr>
+                <tr>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start Date</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dalitso</td>
+                    <td>Teacher</td>
+                    <td>Roma</td>
+                    <td>30</td>
+                    <td>10-2-22</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>Judith</td>
+                    <td>Trainer</td>
+                    <td>Roma</td>
+                    <td>30</td>
+                    <td>10-2-22</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>Mutambe</td>
+                    <td>Tutor</td>
+                    <td>Roma</td>
+                    <td>30</td>
+                    <td>10-2-22</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>Nyawa</td>
+                    <td>Accountant</td>
+                    <td>Roma</td>
+                    <td>30</td>
+                    <td>10-2-22</td>
+                    <td>200000</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start Date</th>
+                    <th>Salary</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+    <!-- Javascript  -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <!-- data tables sccripts -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <!-- custom scripts  -->
+    <script>
+        $('.mydatatable').DataTable({
+            // order: [[3, 'desc']],
+            // pagingType: 'full_numbers'
+            searching: false,
+            ordering: false,
+            lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+            createdRow: function (row, data, index ) {
+                if(data[5].replace(/[\$,]/g, '') * 1 > 150000) {
+                    $('td',row).eq(5).addClass('text-sucess');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
